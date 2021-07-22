@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+{{product|title}}
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="fs-1">{{product|title}}</h1>
+    <hr>
+  
+    <div class="card mx-auto mt-5 col-sm-12 col-md-12 col-lg-6"
+        ">
+        <div class="card-header">
+            <h5 class="card-title">Details</h5>
+        </div>
+        <div class="card-body">
+         
+         
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{product.supplier|title}}</p>
+                <span class="card-text text-muted small">supplier</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{product.description|default:"---"}}</p>
+                <span class="card-text text-muted small">description</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{product.category|title}}</p>
+                <span class="card-text text-muted small">category</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">
+                    <a class="text-decoration-none text-dark"
+                    {% if product.image %}
+                    target="_blank" 
+                    href="{{product.image.url|default:'#'}}"
+                    {% else %}
+                    href=""
+                    {% endif %}
+                         >
+                    {{product.image|default:"---"}}
+                </a>
+                </p>
+                <span class="card-text text-muted small">image</span>
+
+            </div>
+       
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-dark px-5" href="{{product.get_update_url}}">Edit</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

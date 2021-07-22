@@ -16,12 +16,13 @@ class Tags(TimeStampMixin):
 
 class Supplier(TimeStampMixin):
     name = models.CharField(max_length=255, unique=True)
+    description = models.TextField(blank=True, null=True)
     slug = models.SlugField(max_length=255, null=True, unique=True)
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
     district = models.CharField(
-        max_length=25, choices=DISTRICT_LIST, default="castries"
+        max_length=25, choices=DISTRICT_LIST, default="Castries"
     )
     website = models.URLField(blank=True)
     tag = models.ManyToManyField(Tags, blank=True)
