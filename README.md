@@ -1,2 +1,8 @@
 # silver-fortnight
-treasury seo management system
+# Treasury S.E.O Management System
+
+## Clone the repo
+```
+git clone 
+```
+
