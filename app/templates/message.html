@@ -1,0 +1,17 @@
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-info alert-dismissible fade show col-sm-12 col-md-12 col-lg-5 mb-3  message-timeout"
+    style="position: absolute; top:6rem; right:2rem;"
+    role="alert">
+    {{ message }}
+    <button type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+<script>
+    $(".message-timeout").delay(2500).fadeOut();
+  </script>
