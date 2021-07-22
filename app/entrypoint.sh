@@ -11,8 +11,12 @@
 #     echo "PostgreSQL started"
 # fi
 
-python manage.py flush --no-input
+
+# python manage.py flush --noinput
 python manage.py makemigrations
 python manage.py migrate
+python manage.py createsuperuser --email swelanauguste@gmail.com --username superuser --noinput
+# python manage.py collectstatic --noinput
+
 
 exec "$@"
