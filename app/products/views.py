@@ -6,13 +6,13 @@ from .forms import ProductCreateForm, ProductUpdateForm
 from django.contrib.messages.views import SuccessMessageMixin
 
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     context_object_name = "products"
     paginate_by = 10
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     context_object_name = "product"
 
@@ -31,7 +31,7 @@ class ProductCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class ProductUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Product
     form_class = ProductUpdateForm
-    template_name_suffix = '_update_form'
+    template_name_suffix = "_update_form"
     success_message = "%(name)s was updated successfully"
 
     def form_valid(self, form):
