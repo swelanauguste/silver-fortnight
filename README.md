@@ -3,6 +3,6 @@
 
 ## Clone the repo
 ```
-git clone 
+git clone https://github.com/swelanauguste/silver-fortnight.git
 ```
 

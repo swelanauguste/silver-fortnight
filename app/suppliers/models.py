@@ -4,7 +4,7 @@ from django.utils.text import slugify
 from mixins.assets import DISTRICT_LIST, TimeStampMixin
 
 
-class Tags(TimeStampMixin):
+class Tag(TimeStampMixin):
     name = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
@@ -16,17 +16,18 @@ class Tags(TimeStampMixin):
 
 class Supplier(TimeStampMixin):
     name = models.CharField(max_length=255, unique=True)
+    description = models.TextField(blank=True, null=True)
     slug = models.SlugField(max_length=255, null=True, unique=True)
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
     district = models.CharField(
-        max_length=25, choices=DISTRICT_LIST, default="castries"
+        max_length=25, choices=DISTRICT_LIST, default="Castries"
     )
     website = models.URLField(blank=True)
-    tag = models.ManyToManyField(Tags, blank=True)
     is_active = models.BooleanField(default=True)
     is_deleted = models.BooleanField(default=False)
+    tag = models.ManyToManyField(Tag, related_name='supplier_tags', blank=True)
 
     class Meta:
         ordering = ["name"]

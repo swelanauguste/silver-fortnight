@@ -7,7 +7,10 @@ from mixins.assets import Index
 
 urlpatterns = [
     path("", Index.as_view(), name="index"),
-    path("suppliers", include("suppliers.urls", namespace="suppliers")),
+    path("suppliers/", include("suppliers.urls", namespace="suppliers")),
+    path("products/", include("products.urls", namespace="products")),
+    path("orders/", include("orders.urls", namespace="orders")),
+    path("deliveries/", include("deliveries.urls", namespace="deliveries")),
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
 ]

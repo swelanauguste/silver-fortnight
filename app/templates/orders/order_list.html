@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+Orders
+{% endblock head_title %}
+
+
+{% block content %}
+<div class="container my-5">
+        <h1 class="fs-1 list-inline-item ">Orders</h1>
+        <hr>
+            <a href="{% url 'orders:order-create' %}"
+                class="btn btn-dark px-5 text-end">add</a>
+                <div class="my-5">
+    {% for order in orders %}
+    <a href="{{order.get_absolute_url }}">
+        {{order|title}}
+    </a>
+    <hr>
+    {% empty %}
+    <p class="text-center">No Orders</p>
+    {% endfor %}
+</div>
+</div>
+{% endblock content %}

@@ -13,9 +13,9 @@ Suppliers
             <a href="{% url 'suppliers:supplier-create' %}"
                 class="btn btn-dark px-5 text-end">add</a>
                 <div class="my-5">
-    {% for object in object_list %}
-    <a href="{{object.get_absolute_url }}">
-        {{object.name|title}}
+    {% for supplier in suppliers %}
+    <a href="{{supplier.get_absolute_url }}">
+        {{supplier.name|title}}
         <br>
     </a>
     {% endfor %}

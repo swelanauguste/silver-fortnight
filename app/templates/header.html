@@ -4,6 +4,27 @@
                         class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <ul
                                 class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                                <!-- <li><a href="#"
+                                                class="nav-link px-2 link-dark dropdown-toggle text-light"
+                                                href="#"
+                                                id="navbarDarkDropdownMenuLink"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false">Inventory</a>
+                                        <ul class="dropdown-menu"
+                                                aria-labelledby="navbarDarkDropdownMenuLink">
+                                                <li><a class="dropdown-item"
+                                                                href="#">Action</a>
+                                                </li>
+                                                <li><a class="dropdown-item"
+                                                                href="#">Another
+                                                                action</a></li>
+                                                <li><a class="dropdown-item"
+                                                                href="#">Something
+                                                                else here</a>
+                                                </li>
+                                        </ul>
+                                </li> -->
                                 <li><a href="#"
                                                 class="nav-link px-2 link-dark dropdown-toggle text-light"
                                                 href="#"
@@ -14,7 +35,12 @@
                                         <ul class="dropdown-menu"
                                                 aria-labelledby="navbarDarkDropdownMenuLink">
                                                 <li><a class="dropdown-item"
-                                                                href="#">Action</a>
+                                                                href="{% url 'products:product-create' %}">Add
+                                                                Product
+                                                        </a></li>
+                                                <li><a class="dropdown-item"
+                                                                href="{% url 'products:product-list' %}">Product
+                                                                List</a>
                                                 </li>
                                                 <li><a class="dropdown-item"
                                                                 href="#">Another
@@ -39,27 +65,7 @@
                                                 </li>
                                         </ul>
                                 </li>
-                                <li><a href="#"
-                                                class="nav-link px-2 link-dark dropdown-toggle text-light"
-                                                href="#"
-                                                id="navbarDarkDropdownMenuLink"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false">Inventory</a>
-                                        <ul class="dropdown-menu"
-                                                aria-labelledby="navbarDarkDropdownMenuLink">
-                                                <li><a class="dropdown-item"
-                                                                href="#">Action</a>
-                                                </li>
-                                                <li><a class="dropdown-item"
-                                                                href="#">Another
-                                                                action</a></li>
-                                                <li><a class="dropdown-item"
-                                                                href="#">Something
-                                                                else here</a>
-                                                </li>
-                                        </ul>
-                                </li>
+
                                 <li><a href="#"
                                                 class="nav-link px-2 link-dark dropdown-toggle text-light"
                                                 href="#"
@@ -69,12 +75,36 @@
                                                 aria-expanded="false">Suppliers</a>
                                         <ul class="dropdown-menu"
                                                 aria-labelledby="navbarDarkDropdownMenuLink">
+
+
                                                 <li><a class="dropdown-item"
-                                                                href="{% url 'suppliers:supplier-list' %}">Suppliers</a>
+                                                                href="{% url 'suppliers:supplier-create' %}">Add
+                                                                Supplier
+                                                        </a>
                                                 </li>
                                                 <li><a class="dropdown-item"
-                                                                href="#">Another
-                                                                action</a></li>
+                                                                href="{% url 'suppliers:supplier-list' %}">Supplier
+                                                                List</a>
+                                                </li>
+                                        </ul>
+                                </li>
+                                <li><a href="#"
+                                                class="nav-link px-2 link-dark dropdown-toggle text-light"
+                                                href="#"
+                                                id="navbarDarkDropdownMenuLink"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false">Orders</a>
+                                        <ul class="dropdown-menu"
+                                                aria-labelledby="navbarDarkDropdownMenuLink">
+                                                <li><a class="dropdown-item"
+                                                                href="{% url 'orders:order-create' %}">Receive
+                                                                Order</a>
+                                                </li>
+                                                <li><a class="dropdown-item"
+                                                                href="{% url 'orders:order-list' %}">Order
+                                                                List
+                                                        </a></li>
                                                 <li><a class="dropdown-item"
                                                                 href="#">Something
                                                                 else here</a>
@@ -87,15 +117,17 @@
                                                 id="navbarDarkDropdownMenuLink"
                                                 role="button"
                                                 data-bs-toggle="dropdown"
-                                                aria-expanded="false">Products</a>
+                                                aria-expanded="false">Deliveries</a>
                                         <ul class="dropdown-menu"
                                                 aria-labelledby="navbarDarkDropdownMenuLink">
                                                 <li><a class="dropdown-item"
-                                                                href="#">Action</a>
+                                                                href="{% url 'deliveries:delivery-create' %}">Make a Delivery
+                                                                </a>
                                                 </li>
                                                 <li><a class="dropdown-item"
-                                                                href="#">Another
-                                                                action</a></li>
+                                                                href="{% url 'deliveries:delivery-list' %}">Delivery
+                                                                List
+                                                        </a></li>
                                                 <li><a class="dropdown-item"
                                                                 href="#">Something
                                                                 else here</a>

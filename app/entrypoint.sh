@@ -16,6 +16,10 @@
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser --email swelanauguste@gmail.com --username superuser --noinput
+python manage.py add_categories categories.txt
+python manage.py add_tags tags.txt
+python manage.py add_departments departments.txt
+python manage.py add_positions positions.txt
 # python manage.py collectstatic --noinput
 
 

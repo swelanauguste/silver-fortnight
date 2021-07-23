@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+{{delivery|title}}
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="fs-1">{{delivery|title}}</h1>
+    <hr>
+  
+    <div class="card mx-auto mt-5 col-sm-12 col-md-12 col-lg-6"
+        ">
+        <div class="card-header">
+            <h5 class="card-title">Details</h5>
+        </div>
+        <div class="card-body">
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{delivery.uid}}</p>
+                <span class="card-text text-muted small">UID</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{delivery.product.supplier|title}}</p>
+                <span class="card-text text-muted small">supplier</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{delivery.qty|default:"---"}}</p>
+                <span class="card-text text-muted small">delivered</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{delivery.delivery_date|default:"---"}}</p>
+                <span class="card-text text-muted small">delivery_date </span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{delivery.received_comment|default:"---"}}</p>
+                <span class="card-text text-muted small">delivery_comment</span>
+
+            </div>
+        
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-dark px-5" href="{{order.get_update_url}}">Edit</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

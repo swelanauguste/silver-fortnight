@@ -2,14 +2,14 @@
 
 
 {% block head_title %}
-{{object|title}}
+{{supplier|title}}
 {% endblock head_title %}
 
 
 
 {% block content %}
 <div class="container my-5">
-    <h1 class="fs-1">{{object|title}}</h1>
+    <h1 class="fs-1">{{supplier|title}}</h1>
     <hr>
   
     <div class="card mx-auto mt-5 col-sm-12 col-md-12 col-lg-6"
@@ -20,8 +20,8 @@
         <div class="card-body">
             <div class="mb-2">
                 <p class="card-text my-0 border-bottom">
-                    <a class="text-decoration-none text-dark" href="mailto:{{object.email}}">
-                    {{object.email}}
+                    <a class="text-decoration-none text-dark" href="mailto:{{supplier.email}}">
+                    {{supplier.email}}
                 </a>
                 </p>
                 <span class="card-text text-muted small">email</span>
@@ -29,35 +29,35 @@
             </div>
             <div class="mb-2">
                 <p class="card-text my-0 border-bottom">
-                    <a class="text-decoration-none text-dark" href="tel:{{object.phone}}">
-                    {{object.phone}}
+                    <a class="text-decoration-none text-dark" href="tel:{{supplier.phone}}">
+                    {{supplier.phone}}
                 </a>
                 </p>
                 <span class="card-text text-muted small">phone</span>
 
             </div>
             <div class="mb-2">
-                <p class="card-text my-0 border-bottom">{{object.get_full_address|title}}</p>
+                <p class="card-text my-0 border-bottom">{{supplier.get_full_address|title}}</p>
                 <span class="card-text text-muted small">address</span>
 
             </div>
             <div class="mb-2">
                 <p class="card-text my-0 border-bottom">
-                    <a target="_blank" href="{{object.website}}">
-                    {{object.website}}
+                    <a target="_blank" href="{{supplier.website}}">
+                    {{supplier.website}}
                 </a>
                 </p>
                 <span class="card-text text-muted small">website</span>
 
             </div>
             <div class="mb-2">
-                <p class="card-text my-0 border-bottom">{{object.is_active|yesno:"yes,no"|title}}</p>
+                <p class="card-text my-0 border-bottom">{{supplier.is_active|yesno:"yes,no"|title}}</p>
                 <span class="card-text text-muted small">is active</span>
 
             </div>
         </div>
         <div class="card-footer">
-            <a class="btn btn-dark px-5" href="{{object.get_update_url}}">Edit</a>
+            <a class="btn btn-dark px-5" href="{{supplier.get_update_url}}">Edit</a>
         </div>
     </div>
 </div>

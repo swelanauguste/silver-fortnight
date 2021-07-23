@@ -7,11 +7,13 @@ class SupplierCreateForm(forms.ModelForm):
     class Meta:
         model = Supplier
         fields = "__all__"
-        exclude =  ["created_by", "updated_by", 'slug', 'is_deleted']
+        exclude = ["created_by", "updated_by", "slug", "is_deleted"]
+        widgets = {"description": forms.Textarea(attrs={"rows": 3})}
 
 
 class SupplierUpdateForm(forms.ModelForm):
     class Meta:
         model = Supplier
         fields = "__all__"
-        exclude = ["created_by", "updated_by", 'slug', 'is_deleted']
+        exclude = ["created_by", "updated_by", "slug", "is_deleted"]
+        widgets = {"description": forms.Textarea(attrs={"rows": 3})}
