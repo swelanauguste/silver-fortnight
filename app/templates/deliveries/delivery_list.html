@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+Deliveries
+{% endblock head_title %}
+
+
+{% block content %}
+<div class="container my-5">
+        <h1 class="fs-1 list-inline-item ">Deliveries</h1>
+        <hr>
+            <a href="{% url 'deliveries:delivery-create' %}"
+                class="btn btn-dark px-5 text-end">add</a>
+                <div class="my-5">
+    {% for delivery in deliveries %}
+    <a href="{{delivery.get_absolute_url }}">
+        {{delivery|title}}
+    </a>
+    <hr>
+    {% empty %}
+    <p class="text-center">No Deliveries</p>
+    {% endfor %}
+</div>
+</div>
+{% endblock content %}

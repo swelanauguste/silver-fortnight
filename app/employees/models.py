@@ -27,8 +27,8 @@ class Employee(models.Model):
     # middle_name = models.CharField(max_length=200, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
     tel = models.CharField(max_length=25, null=True, blank=True)
-    position = models.ForeignKey(Position, on_delete=models.SET_NULL, null=True)
-    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
+    position = models.ForeignKey(Position, on_delete=models.SET_NULL, null=True, blank=True)
+    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
     is_seo = models.BooleanField(default=False)
     is_ag = models.BooleanField(default=False)
 

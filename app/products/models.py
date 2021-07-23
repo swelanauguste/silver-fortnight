@@ -47,11 +47,16 @@ class Product(TimeStampMixin):
     def get_update_url(self):
         return reverse("products:product-update", kwargs={"slug": self.slug})
 
-    def get_balance(self):
+    def get_order_balance(self):
         return sum(
-            (item.get_order_quantity() for item in self.orders.all()), self.init_qty
+            (order.get_order_quantity() for order in self.orders.all()), self.init_qty
         )
         # ) - (sum(item.get_delivered_quantity() for item in self.delivered_goods.all()))
+    def get_delivered_balance(self):
+        return sum(delivery.get_delivered_quantity() for delivery in self.deliveries.all())
+
+    def get_inventory_balance(self):
+        return self.get_order_balance() - self.get_delivered_balance()
 
     def __str__(self):
         return self.name

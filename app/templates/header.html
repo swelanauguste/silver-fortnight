@@ -111,6 +111,29 @@
                                                 </li>
                                         </ul>
                                 </li>
+                                <li><a href="#"
+                                                class="nav-link px-2 link-dark dropdown-toggle text-light"
+                                                href="#"
+                                                id="navbarDarkDropdownMenuLink"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false">Deliveries</a>
+                                        <ul class="dropdown-menu"
+                                                aria-labelledby="navbarDarkDropdownMenuLink">
+                                                <li><a class="dropdown-item"
+                                                                href="{% url 'deliveries:delivery-create' %}">Make a Delivery
+                                                                </a>
+                                                </li>
+                                                <li><a class="dropdown-item"
+                                                                href="{% url 'deliveries:delivery-list' %}">Delivery
+                                                                List
+                                                        </a></li>
+                                                <li><a class="dropdown-item"
+                                                                href="#">Something
+                                                                else here</a>
+                                                </li>
+                                        </ul>
+                                </li>
                         </ul>
 
                         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">

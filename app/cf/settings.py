@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "suppliers",
     "products",
     "orders",
+    "deliveries",
     "employees.apps.EmployeesConfig",
     "django.contrib.admin",
     "django.contrib.auth",

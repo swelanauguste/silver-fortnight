@@ -4,16 +4,19 @@ from products.models import Product
 from mixins.assets import TimeStampMixin
 from django.urls import reverse
 
+
 def purchase_order_path(instance, filename):
     return "purchase_orders/%s/%s" % (instance.pk, filename)
+
 
 def uid():
     uid = uuid.uuid4()
     uid = str(uid).upper()
-    return uid.split('-')[4]
+    return uid.split("-")[4]
+
 
 class Order(TimeStampMixin):
-    uid = models.CharField(max_length=20,  editable=False, default=uid())
+    uid = models.CharField(max_length=20, editable=False, default=uid())
     product = models.ForeignKey(
         Product, related_name="orders", on_delete=models.SET_NULL, null=True
     )
@@ -35,9 +38,6 @@ class Order(TimeStampMixin):
 
     def get_order_quantity(self):
         return self.qty
-
-    def get_balance(self):
-        return self.product.qty
 
     def __str__(self):
         return self.product.name
