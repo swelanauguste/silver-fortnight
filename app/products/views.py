@@ -19,13 +19,12 @@ class ProductDetailView(DetailView):
 
 class ProductCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Product
-    template_name = "products/product_create.html"
     form_class = ProductCreateForm
     success_message = "%(name)s was created successfully"
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
-        form.instance.updated = self.request.user
+        form.instance.updated_by = self.request.user
         return super().form_valid(form)
 
 
@@ -36,5 +35,5 @@ class ProductUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = "%(name)s was updated successfully"
 
     def form_valid(self, form):
-        form.instance.updated = self.request.user
+        form.instance.updated_by = self.request.user
         return super().form_valid(form)

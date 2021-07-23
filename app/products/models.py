@@ -2,7 +2,7 @@ from django.db import models
 from mixins.assets import TimeStampMixin
 from django.urls import reverse
 from django.utils.text import slugify
-from suppliers.models import Supplier
+from suppliers.models import Supplier, Tag
 
 
 class Category(TimeStampMixin):
@@ -31,9 +31,10 @@ class Product(TimeStampMixin):
     )
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, null=True, unique=True)
+    tags = models.ManyToManyField(Tag, related_name="product_tags", blank=True)
     image = models.ImageField(upload_to="products/", blank=True)
     description = models.TextField(blank=True)
-    init_qty = models.IntegerField("initial quantity",default=0)
+    init_qty = models.IntegerField("initial quantity", default=0)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -46,11 +47,11 @@ class Product(TimeStampMixin):
     def get_update_url(self):
         return reverse("products:product-update", kwargs={"slug": self.slug})
 
-    # def get_total_quantity(self):
-    #     return (
-    #         sum(item.get_received_quantity() for item in self.received_goods.all())
-    #         + self.qty
-    #     ) - (sum(item.get_delivered_quantity() for item in self.delivered_goods.all()))
+    def get_balance(self):
+        return sum(
+            (item.get_order_quantity() for item in self.orders.all()), self.init_qty
+        )
+        # ) - (sum(item.get_delivered_quantity() for item in self.delivered_goods.all()))
 
     def __str__(self):
         return self.name

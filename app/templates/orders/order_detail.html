@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+{{order|title}}
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="fs-1">{{order|title}}</h1>
+    <hr>
+  
+    <div class="card mx-auto mt-5 col-sm-12 col-md-12 col-lg-6"
+        ">
+        <div class="card-header">
+            <h5 class="card-title">Details</h5>
+        </div>
+        <div class="card-body">
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{order.product.supplier|title}}</p>
+                <span class="card-text text-muted small">supplier</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{order.qty|default:"---"}}</p>
+                <span class="card-text text-muted small">ordered</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{order.received_comment|default:"---"}}</p>
+                <span class="card-text text-muted small">received comment</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">
+                    <a class="text-decoration-none text-dark"
+                    {% if order.purchase_order %}
+                    target="_blank" 
+                    href="{{order.purchase_order.url|default:'#'}}"
+                    {% else %}
+                    href=""
+                    {% endif %}
+                         >
+                    {{order.purchase_order|default:"---"}}
+                </a>
+                </p>
+                <span class="card-text text-muted small">P.O</span>
+
+            </div>
+       
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-dark px-5" href="{{order.get_update_url}}">Edit</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Supplier
+from .models import Supplier, Tag
 
 
 @admin.register(Supplier)
@@ -9,3 +9,6 @@ class SupplierAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         "slug": ("name",),
     }
+
+
+admin.site.register(Tag)

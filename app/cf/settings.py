@@ -11,15 +11,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # # 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
 # # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
 # ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
-SECRET_KEY = 'secret-key='
+SECRET_KEY = "secret-key="
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
 INSTALLED_APPS = [
     "suppliers",
     "products",
+    "orders",
+    "employees.apps.EmployeesConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
