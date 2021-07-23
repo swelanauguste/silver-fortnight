@@ -12,5 +12,5 @@ services:
     environment:
       - DJANGO_SUPERUSER_PASSWORD=superuser
       - DEBUG=1
-      - SECRET_KEY=foo
+      - SECRET_KEY=a';k'm'a;gjobhvwliaugfkbugcrlaiuf'ctkpo'mqt'
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1] *
