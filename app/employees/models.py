@@ -7,11 +7,13 @@ from django.conf import settings
 Employee = settings.AUTH_USER_MODEL
 from mixins.assets import TimeStampMixin
 
+
 class Position(TimeStampMixin):
     name = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
         return self.name
+
 
 class Department(TimeStampMixin):
     name = models.CharField(max_length=255, unique=True)
@@ -27,13 +29,20 @@ class Employee(models.Model):
     # middle_name = models.CharField(max_length=200, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
     tel = models.CharField(max_length=25, null=True, blank=True)
-    position = models.ForeignKey(Position, on_delete=models.SET_NULL, null=True, blank=True)
-    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
-    is_seo = models.BooleanField(default=False)
-    is_ag = models.BooleanField(default=False)
+    position = models.ForeignKey(
+        Position, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    department = models.ForeignKey(
+        Department, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    is_seo = models.BooleanField("SEO", default=False)
+    is_ag = models.BooleanField("AG", default=False)
 
-    # def get_absolute_url(self):
-    #     return reverse("employees:detail", kwargs={"pk": self.pk})
+    def get_absolute_url(self):
+        return reverse("employees:employee-detail", kwargs={"pk": self.pk})
+
+    def get_update_url(self):
+        return reverse("employees:employee-update", kwargs={"pk": self.pk})
 
     class Meta:
         ordering = ["last_name", "first_name"]
@@ -43,5 +52,8 @@ class Employee(models.Model):
             return "%s, %s" % (self.last_name, self.first_name)
         return self.employee.username
 
+    def get_user_email(self):
+        return self.employee.email
+
     def __str__(self):
-        return str(self.employee.username)
+        return self.employee.username

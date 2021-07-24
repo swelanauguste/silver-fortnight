@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+Employees
+{% endblock head_title %}
+
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="fs-1 list-inline-item ">Employees</h1>
+    <hr>
+    <a href="{% url 'suppliers:supplier-create' %}"
+        class="btn btn-dark px-5 text-end">add</a>
+    <div class="my-5">
+        <div class="my-5">
+            {% include 'pagination.html' %}
+            <div class="table-responsive">
+                <table class="table table-hover small">
+                    <thead>
+                        <tr>
+                            <th scope="col">Employee</th>
+                            <th scope="col">email</th>
+                            <th scope="col">phone</th>
+                            <th scope="col">post</th>
+                            <th scope="col">department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for employee in employees %}
+                        <tr>
+                            <td>
+                                <a title="product details"
+                                    class="text-decoration-none text-dark"
+                                    href="{{employee.get_absolute_url }}">
+                                    {{employee.get_full_name}}
+                                </a>
+                            </td>
+                            <td title="email">
+                                <a
+                                    href="mailto:{{employee.get_user_email|default:'--'}}">
+                                    {{employee.get_user_email}}
+                                </a>
+                            </td>
+                            <td title="phone">
+                                <a
+                                    href="tel:{{employee.tel|default:'--'}}">
+                                    {{employee.tel}}
+                                </a>
+                            </td>
+                            <td title="position">
+                                {{employee.position}}
+                            </td>
+                            <td title="position">
+                                {{employee.department}}
+                            </td>
+                        </tr>
+                        </a>
+                        {% empty %}
+                        <td colspan="4"
+                            class="text-center">No Employess
+                            <td />
+                            {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% include 'pagination.html' %}
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

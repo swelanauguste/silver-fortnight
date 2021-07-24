@@ -134,6 +134,28 @@
                                                 </li>
                                         </ul>
                                 </li>
+                                {% if user.employee.is_ag %}
+                                <li><a href="#"
+                                                class="nav-link px-2 link-dark dropdown-toggle text-light"
+                                                href="#"
+                                                id="navbarDarkDropdownMenuLink"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false">Employees</a>
+                                        <ul class="dropdown-menu"
+                                                aria-labelledby="navbarDarkDropdownMenuLink">
+                                                </li>
+                                                <li><a class="dropdown-item"
+                                                                href="{% url 'employees:employee-list' %}">Employee
+                                                                List
+                                                        </a></li>
+                                                <li><a class="dropdown-item"
+                                                                href="#">Something
+                                                                else here</a>
+                                                </li>
+                                        </ul>
+                                </li>
+                                {% endif %}
                         </ul>
 
                         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -143,26 +165,24 @@
                                         aria-label="Search">
                         </form>
                         {% if user.is_authenticated %}
-
                         <div class="dropdown text-end">
-
                                 <a href="#"
                                         class="d-block link-dark text-decoration-none dropdown-toggle text-light"
                                         id="dropdownUser1"
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false">
-                                        <img src="https://github.com/mdo.png"
-                                                alt="mdo"
-                                                width="32"
-                                                height="32"
-                                                class="rounded-circle">
+                                        <button class="btn btn-sm  btn-outline-secondary">{{user}}</button>
                                 </a>
                                 <ul class="dropdown-menu text-small"
                                         aria-labelledby="dropdownUser1">
 
                                         <li><a class="dropdown-item"
+                                                        href="{{ user.employee.get_absolute_url }}">Profile
+                                                        </a>
+                                        </li>
+                                        <li><a class="dropdown-item"
                                                         href="{% url 'account_email' %}">Change
-                                                        E-mai</a>
+                                                        E-mail</a>
                                         </li>
                                         <li>
                                                 <hr class="dropdown-divider">
@@ -170,12 +190,9 @@
                                         <li><a class="dropdown-item"
                                                         href="{% url 'account_logout' %}">Sign
                                                         out</a></li>
-
-
                                 </ul>
                         </div>
                         {% endif %}
-
                 </div>
         </div>
 </header>

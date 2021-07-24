@@ -9,10 +9,13 @@
 
 {% block content %}
 <div class="container my-5">
+    <div class="my-5">
+        <a class="btn btn-outline-dark px-5" href="{% url 'suppliers:supplier-list' %}">Back to list</a>
+    </div>
     <h1 class="fs-1">{{supplier|title}}</h1>
     <hr>
   
-    <div class="card mx-auto mt-5 col-sm-12 col-md-12 col-lg-6"
+    <div class="card mx-auto mt-5 col-sm-12 col-md-12 col-lg-6 shadow"
         ">
         <div class="card-header">
             <h5 class="card-title">Details</h5>
@@ -56,8 +59,8 @@
 
             </div>
         </div>
-        <div class="card-footer">
-            <a class="btn btn-dark px-5" href="{{supplier.get_update_url}}">Edit</a>
+        <div class="card-footer text-end">
+            <a class="btn btn-outline-dark px-5" href="{{supplier.get_update_url}}">Edit</a>
         </div>
     </div>
 </div>
