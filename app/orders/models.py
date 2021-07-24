@@ -9,14 +9,14 @@ def purchase_order_path(instance, filename):
     return "purchase_orders/%s/%s" % (instance.pk, filename)
 
 
-def uid():
-    uid = uuid.uuid4()
-    uid = str(uid).upper()
-    return uid.split("-")[4]
+# def uid():
+#     uid = uuid.uuid4()
+#     uid = str(uid).upper()
+#     return uid.split("-")[4]
 
 
 class Order(TimeStampMixin):
-    uid = models.CharField(max_length=20, editable=False, default=uid())
+    # uid = models.CharField(max_length=20, editable=False, default=uid())
     product = models.ForeignKey(
         Product, related_name="orders", on_delete=models.SET_NULL, null=True
     )

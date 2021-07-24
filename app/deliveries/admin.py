@@ -4,4 +4,4 @@ from .models import Delivery
 
 @admin.register(Delivery)
 class DeliveryAdmin(admin.ModelAdmin):
-    list_display = ['product', 'uid', 'qty', 'delivery_date', 'deliveried_to']
+    list_display = ['product', 'qty', 'delivery_date', 'deliveried_to']

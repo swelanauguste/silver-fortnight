@@ -11,14 +11,85 @@ Home
 <div class="container my-5">
     <h1 class="fs-1">Welcome to the home page!</h1>
     <hr>
-   
+
     <div class="container my-5">
-        <a href="{% url 'products:product-list' %}">Products</a>
-        <hr>
-        <a href="{% url 'suppliers:supplier-list' %}">Supplier</a>
-        <hr>
-        <a href="{% url 'suppliers:supplier-list' %}">Supplier</a>
-        <hr>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <a class="text-decoration-none"
+                href="{% url 'products:product-list' %}">
+                <div class="col">
+                    <div class="card text-white bg-secondary mb-3"
+                        style="max-width: 18rem;">
+                        <div class="card-header">Products</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Some quick example text to
+                                build on the card title and make up the bulk of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="text-decoration-none"
+                href="{% url 'suppliers:supplier-list' %}">
+                <div class="col">
+                    <div class="card text-white bg-info mb-3"
+                        style="max-width: 18rem;">
+                        <div class="card-header">Supplier</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Some quick example text to
+                                build on the card title and make up the bulk of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="text-decoration-none"
+                href="{% url 'suppliers:supplier-list' %}">
+                <div class="col">
+                    <div class="card text-white bg-primary mb-3"
+                        style="max-width: 18rem;">
+                        <div class="card-header">Supplier</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Some quick example text to
+                                build on the card title and make up the bulk of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="text-decoration-none"
+                href="{% url 'suppliers:supplier-list' %}">
+                <div class="col">
+                    <div class="card text-white bg-warning mb-3"
+                        style="max-width: 18rem;">
+                        <div class="card-header">Supplier</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Some quick example text to
+                                build on the card title and make up the bulk of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="text-decoration-none"
+                href="{% url 'suppliers:supplier-list' %}">
+                <div class="col">
+                    <div class="card text-white bg-secondary mb-3"
+                        style="max-width: 18rem;">
+                        <div class="card-header">Supplier</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Some quick example text to
+                                build on the card title and make up the bulk of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
 {% endblock content %}

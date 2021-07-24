@@ -4,16 +4,16 @@ from django.urls import reverse
 from mixins.assets import TimeStampMixin
 from products.models import Product
 
-def uid():
-    uid = uuid.uuid4()
-    uid = str(uid).upper()
-    return uid.split("-")[4]
+# def uid():
+#     uid = uuid.uuid4()
+#     uid = str(uid).upper()
+#     return uid.split("-")[4]
 
 
 
 # Create your models here.
 class Delivery(TimeStampMixin):
-    uid = models.CharField(max_length=20, editable=False, default=uid())
+    # uid = models.CharField(max_length=20, editable=False, default=uid())
 
     product = models.ForeignKey(
         Product, related_name="deliveries", on_delete=models.SET_NULL, null=True

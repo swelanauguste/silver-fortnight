@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+{{employee.get_full_name|title}}
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container my-5">
+    <div class="my-5">
+        <a class="btn btn-outline-dark px-5" href="{% url 'employees:employee-list' %}">Back to list</a>
+    </div>
+    <h1 class="fs-1">{{employee.get_full_name|title}}</h1>
+    <hr>
+  
+    <div class="card mx-auto mt-5 col-sm-12 col-md-12 col-lg-6 shadow"
+        ">
+        <div class="card-header">
+            <h5 class="card-title">Details</h5>
+        </div>
+        <div class="card-body">
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">
+                    <a class="text-decoration-none text-dark" href="mailto:{{employee.get_user_email}}">
+                    {{employee.get_user_email}}
+                </a>
+                </p>
+                <span class="card-text text-muted small">email</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">
+                    <a class="text-decoration-none text-dark" href="tel:{{employee.tel}}">
+                    {{employee.tel}}
+                </a>
+                </p>
+                <span class="card-text text-muted small">phone</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{employee.position|title}}</p>
+                <span class="card-text text-muted small">position</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">
+                    {{employee.department}}
+                </p>
+                <span class="card-text text-muted small">department</span>
+
+            </div>
+            <div class="mb-2">
+                <p class="card-text my-0 border-bottom">{{employee.is_active|yesno:"yes,no"|title}}</p>
+                <span class="card-text text-muted small">is active</span>
+
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <a class="btn btn-outline-dark px-5" href="{{employee.get_update_url}}">Edit</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
