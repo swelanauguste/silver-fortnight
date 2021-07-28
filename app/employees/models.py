@@ -46,6 +46,11 @@ class Employee(models.Model):
 
     class Meta:
         ordering = ["last_name", "first_name"]
+    
+    def get_employee_initials(self):
+        if self.first_name and self.last_name:
+            return ("%s%s" % (self.first_name[0], self.last_name[0])).upper()
+        return (self.employee.username[0]).upper()
 
     def get_full_name(self):
         if self.first_name and self.last_name:

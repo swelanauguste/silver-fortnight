@@ -17,6 +17,8 @@ services:
       - DEBUG=1
       - SECRET_KEY=a';k'm'a;gjobhvwliaugfkbugcrlaiuf'ctkpo'mqt'
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1] *
+      - EMAIL_HOST_USER=kingship.lc@gmail.com
+      - EMAIL_HOST_PASSWORD=tzsbcgwfczpebfwz
     depends_on:
       - db
 

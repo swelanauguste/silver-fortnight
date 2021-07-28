@@ -4,6 +4,28 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Product
 from .forms import ProductCreateForm, ProductUpdateForm
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import Q
+
+
+class ProductSearchListView(ListView):
+    model = Product
+    template_name = "products/product_search.html"
+    context_object_name = "products"
+    paginate_by = 10
+    queryset = Product.objects.all()
+
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        if query:
+            return Product.objects.filter(
+                Q(category_name__icontains=query)
+                | Q(supplier_name__icontains=query)
+                | Q(name__icontains=query)
+                | Q(tags_name__icontains=query)
+                | Q(description__icontains=query)
+            )
+        else:
+            return Product.objects.all()
 
 
 class ProductListView(LoginRequiredMixin, ListView):

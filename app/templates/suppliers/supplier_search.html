@@ -32,19 +32,7 @@ Suppliers
         class="btn btn-dark px-5 text-end">add</a>
     <div class="my-5">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-4 mx-2 my-5">
-                <h2 class="fs-2">Add supplier</h2>
-                <hr>
-                <div class="my-5">
-                    <form action="{% url 'suppliers:supplier-create' %}"
-                        method="post">
-                        {% csrf_token %}
-                        {{form|crispy}}
-                </div>
-                <button class="btn btn-dark px-5 my-3"
-                    type="submit">submit</button>
-                </form>
-            </div>
+           
             <div class="col">
                 <div class="my-5">
                     <h2 class="fs-2">Suppliers</h2>

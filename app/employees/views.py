@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, UpdateView
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import Q
 from django.http import HttpResponse
-from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.views.generic import DetailView, ListView, TemplateView, UpdateView
 
-from .models import Employee
 from .forms import EmployeeUpdateForm
+from .models import Employee
 
 
 class EmployeeListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
