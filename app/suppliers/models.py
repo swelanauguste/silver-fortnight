@@ -3,6 +3,13 @@ from django.urls import reverse
 from django.utils.text import slugify
 from mixins.assets import DISTRICT_LIST, TimeStampMixin
 
+# create a model manager filter
+class IsNotDeletedManager(models.Manager):
+    def get_queryset(self):
+        return super(IsNotDeletedManager, self).get_queryset().filter(is_deleted=False)
+
+    
+
 
 class Tag(TimeStampMixin):
     name = models.CharField(max_length=100, blank=True, null=True)
@@ -28,6 +35,9 @@ class Supplier(TimeStampMixin):
     is_active = models.BooleanField(default=True)
     is_deleted = models.BooleanField(default=False)
     tag = models.ManyToManyField(Tag, related_name="supplier_tags", blank=True)
+
+    objects = models.Manager()
+    object_list = IsNotDeletedManager()
 
     class Meta:
         ordering = ["name"]

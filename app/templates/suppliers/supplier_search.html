@@ -15,7 +15,7 @@ Suppliers
         {%
         url 'suppliers:supplier-search'
         %}">
-        <input class="form-control form-control-lg rounded-pill"
+        <input class="form-control rounded-pill"
             type="text"
             name="q"
             placeholder="search suppliers by (name, description, email, phone, address, district)..."
@@ -52,6 +52,8 @@ Suppliers
             </span>
         </div>
     </div>
+    {% empty %}
+    <p class="text-center">We weren't able to find anything...</p>
     {% endfor %}
 
 

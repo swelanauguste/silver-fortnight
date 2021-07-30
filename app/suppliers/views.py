@@ -37,7 +37,6 @@ class SupplierSearch(LoginRequiredMixin, ListView):
                 | Q(district__icontains=query)
             ).distinct()
             context["suppliers"] = suppliers
-            print(suppliers)
         else:
             context["suppliers"] = Supplier.objects.all()
         return context
@@ -46,6 +45,7 @@ class SupplierSearch(LoginRequiredMixin, ListView):
 class SupplierListView(LoginRequiredMixin, SuccessMessageMixin, FormMixin, ListView):
     model = Supplier
     form_class = SupplierCreateForm
+    queryset = Supplier.object_list.all()
     context_object_name = "suppliers"
     paginate_by = 10
     success_message = "%(name)s was created successfully"
@@ -82,7 +82,8 @@ class SupplierUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 class SupplierDeleteView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Supplier
     form_class = SupplierDeleteForm
-    success_message = "%(name)s was delete successfully"
+    success_message = "Delete successfully"
+    success_url = reverse_lazy("suppliers:supplier-list")
 
     def form_valid(self, form):
         form.instance.updated = self.request.user

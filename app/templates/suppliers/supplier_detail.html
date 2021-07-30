@@ -10,60 +10,78 @@
 {% block content %}
 <div class="container my-5">
     <div class="my-5">
-        <a class="btn btn-outline-dark px-5" href="{% url 'suppliers:supplier-list' %}">Back to list</a>
+        <a class="btn btn-outline-dark px-5"
+            href="{% url 'suppliers:supplier-list' %}">Back to list</a>
     </div>
     <h1 class="fs-1">{{supplier|title}}</h1>
     <hr>
-  
-    <div class="card mx-auto mt-5 col-sm-12 col-md-12 col-lg-6 shadow"
-        ">
-        <div class="card-header">
-            <h5 class="card-title">Details</h5>
-        </div>
-        <div class="card-body">
-            <div class="mb-2">
-                <p class="card-text my-0 border-bottom">
-                    <a class="text-decoration-none text-dark" href="mailto:{{supplier.email}}">
+
+    <div class="card mx-auto mt-5 col-sm-12 col-md-12 col-lg-6 shadow" ">
+        <div class="
+        card-header">
+        <h5 class="card-title">Details</h5>
+    </div>
+    <div class="card-body">
+        <div class="mb-2">
+            <p class="card-text my-0 border-bottom">
+                <a class="text-decoration-none text-dark"
+                    href="mailto:{{supplier.email}}">
                     {{supplier.email}}
                 </a>
-                </p>
-                <span class="card-text text-muted small">email</span>
+            </p>
+            <span class="card-text text-muted small">email</span>
 
-            </div>
-            <div class="mb-2">
-                <p class="card-text my-0 border-bottom">
-                    <a class="text-decoration-none text-dark" href="tel:{{supplier.phone}}">
+        </div>
+        <div class="mb-2">
+            <p class="card-text my-0 border-bottom">
+                <a class="text-decoration-none text-dark"
+                    href="tel:{{supplier.phone}}">
                     {{supplier.phone}}
                 </a>
-                </p>
-                <span class="card-text text-muted small">phone</span>
+            </p>
+            <span class="card-text text-muted small">phone</span>
 
-            </div>
-            <div class="mb-2">
-                <p class="card-text my-0 border-bottom">{{supplier.get_full_address|title}}</p>
-                <span class="card-text text-muted small">address</span>
+        </div>
+        <div class="mb-2">
+            <p class="card-text my-0 border-bottom">
+                {{supplier.get_full_address|title}}</p>
+            <span class="card-text text-muted small">address</span>
 
-            </div>
-            <div class="mb-2">
-                <p class="card-text my-0 border-bottom">
-                    <a target="_blank" href="{{supplier.website}}">
+        </div>
+        <div class="mb-2">
+            <p class="card-text my-0 border-bottom">
+                <a target="_blank"
+                    href="{{supplier.website}}">
                     {{supplier.website}}
                 </a>
-                </p>
-                <span class="card-text text-muted small">website</span>
+            </p>
+            <span class="card-text text-muted small">website</span>
 
-            </div>
-            <div class="mb-2">
-                <p class="card-text my-0 border-bottom">{{supplier.is_active|yesno:"yes,no"|title}}</p>
-                <span class="card-text text-muted small">is active</span>
-
-            </div>
         </div>
-        <div class="card-footer text-end">
-            <a class="btn btn-outline-dark px-5" href="{{supplier.get_update_url}}">Edit</a>
-            <form action=""></form>
-            <a class="btn btn-sm btn-danger px-5" href="{{supplier.get_delete_url}}">Delete</a>
+        <div class="mb-2">
+            <p class="card-text my-0 border-bottom">
+                {{supplier.is_active|yesno:"yes,no"|title}}</p>
+            <span class="card-text text-muted small">is active</span>
+
         </div>
     </div>
+    <div class="card-footer text-end">
+        <div class="d-grid gap-2 d-md-block">
+
+           
+            <form action="{{supplier.get_delete_url}}"
+                method="POST">
+                {% csrf_token %}
+
+                <button class="btn btn-sm btn-outline-danger"
+                    type="submit">Delete</button>
+                    <a class="btn btn-outline-dark px-5"
+                    href="{{supplier.get_update_url}}">Edit</a>
+        </div>
+
+            </form>
+
+    </div>
+</div>
 </div>
 {% endblock content %}
