@@ -27,10 +27,13 @@ class Supplier(TimeStampMixin):
     website = models.URLField(blank=True)
     is_active = models.BooleanField(default=True)
     is_deleted = models.BooleanField(default=False)
-    tag = models.ManyToManyField(Tag, related_name='supplier_tags', blank=True)
+    tag = models.ManyToManyField(Tag, related_name="supplier_tags", blank=True)
 
     class Meta:
         ordering = ["name"]
+
+    def get_delete_url(self):
+        return reverse("suppliers:supplier-delete", kwargs={"slug": self.slug})
 
     def get_update_url(self):
         return reverse("suppliers:supplier-update", kwargs={"slug": self.slug})

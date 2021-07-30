@@ -24,6 +24,10 @@ class Delivery(TimeStampMixin):
     deliveried_by = models.CharField(max_length=100, blank=True, null=True)
     delivery_comment = models.TextField(blank=True, null=True)
 
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name_plural = "Deliveries"
+
     def get_absolute_url(self):
         return reverse("deliveries:delivery-detail", kwargs={"pk": self.pk})
 

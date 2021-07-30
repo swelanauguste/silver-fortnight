@@ -3,6 +3,12 @@ from django import forms
 from .models import Supplier
 
 
+class SupplierDeleteForm(forms.ModelForm):
+    class Meta:
+        model = Supplier
+        fields = ["is_deleted"]
+
+
 class SupplierCreateForm(forms.ModelForm):
     class Meta:
         model = Supplier

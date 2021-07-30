@@ -25,119 +25,25 @@
                                                 </li>
                                         </ul>
                                 </li> -->
-                                <li><a href="#"
-                                                class="nav-link px-2 link-dark dropdown-toggle text-light"
-                                                href="#"
-                                                id="navbarDarkDropdownMenuLink"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false">Products</a>
-                                        <ul class="dropdown-menu"
-                                                aria-labelledby="navbarDarkDropdownMenuLink">
-                                                <li><a class="dropdown-item"
-                                                                href="{% url 'products:product-create' %}">Add
-                                                                Product
-                                                        </a></li>
-                                                <li><a class="dropdown-item"
-                                                                href="{% url 'products:product-list' %}">Product
-                                                                List</a>
-                                                </li>
-                                                <li><a class="dropdown-item"
-                                                                href="#">Another
-                                                                action</a></li>
-                                                <li><a class="dropdown-item"
-                                                                href="#">Something
-                                                                else here</a>
-                                                </li>
-                                                <li>
-                                                        <hr
-                                                                class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item"
-                                                                href="#">Action</a>
-                                                </li>
-                                                <li><a class="dropdown-item"
-                                                                href="#">Another
-                                                                action</a></li>
-                                                <li><a class="dropdown-item"
-                                                                href="#">Something
-                                                                else here</a>
-                                                </li>
-                                        </ul>
+                                <li>
+                                        <a href="{% url 'products:product-list' %}"
+                                                class="nav-link px-2 link-dark text-light">Products</a>
                                 </li>
 
-                                <li><a href="#"
-                                                class="nav-link px-2 link-dark dropdown-toggle text-light"
-                                                href="#"
-                                                id="navbarDarkDropdownMenuLink"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false">Suppliers</a>
-                                        <ul class="dropdown-menu"
-                                                aria-labelledby="navbarDarkDropdownMenuLink">
 
 
-                                                <li><a class="dropdown-item"
-                                                                href="{% url 'suppliers:supplier-create' %}">Add
-                                                                Supplier
-                                                        </a>
-                                                </li>
-                                                <li><a class="dropdown-item"
-                                                                href="{% url 'suppliers:supplier-list' %}">Supplier
-                                                                List</a>
-                                                </li>
-                                        </ul>
+                                <li><a href="{% url 'suppliers:supplier-list' %}"
+                                                class="nav-link px-2 link-dark text-light">Suppliers</a>
                                 </li>
-                                <li><a href="#"
-                                                class="nav-link px-2 link-dark dropdown-toggle text-light"
-                                                href="#"
-                                                id="navbarDarkDropdownMenuLink"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false">Orders</a>
-                                        <ul class="dropdown-menu"
-                                                aria-labelledby="navbarDarkDropdownMenuLink">
-                                                <li><a class="dropdown-item"
-                                                                href="{% url 'orders:order-create' %}">Receive
-                                                                Order</a>
-                                                </li>
-                                                <li><a class="dropdown-item"
-                                                                href="{% url 'orders:order-list' %}">Order
-                                                                List
-                                                        </a></li>
-                                                <li><a class="dropdown-item"
-                                                                href="#">Something
-                                                                else here</a>
-                                                </li>
-                                        </ul>
+                                <li><a href="{% url 'orders:order-list' %}"
+                                                class="nav-link px-2 link-dark text-light">Orders</a>
                                 </li>
-                                <li><a href="#"
-                                                class="nav-link px-2 link-dark dropdown-toggle text-light"
-                                                href="#"
-                                                id="navbarDarkDropdownMenuLink"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false">Deliveries</a>
-                                        <ul class="dropdown-menu"
-                                                aria-labelledby="navbarDarkDropdownMenuLink">
-                                                <li><a class="dropdown-item"
-                                                                href="{% url 'deliveries:delivery-create' %}">Make
-                                                                a Delivery
-                                                        </a>
-                                                </li>
-                                                <li><a class="dropdown-item"
-                                                                href="{% url 'deliveries:delivery-list' %}">Delivery
-                                                                List
-                                                        </a></li>
-                                                <li><a class="dropdown-item"
-                                                                href="#">Something
-                                                                else here</a>
-                                                </li>
-                                        </ul>
+                                <li><a href="{% url 'deliveries:delivery-list' %}"
+                                                class="nav-link px-2 link-dark text-light">Deliveries</a>
                                 </li>
                                 {% if user.employee.is_ag %}
                                 <li><a href="#"
-                                                class="nav-link px-2 link-dark dropdown-toggle text-light"
+                                                class="nav-link px-2 link-dark text-light"
                                                 href="#"
                                                 id="navbarDarkDropdownMenuLink"
                                                 role="button"
@@ -166,7 +72,7 @@
                                         aria-label="Search">
                         </form> -->
 
-                   
+
                         {% if user.is_authenticated %}
                         <div class="dropdown text-end">
                                 <a href="#"

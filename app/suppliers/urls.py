@@ -14,4 +14,7 @@ urlpatterns = [
     path(
         "update/<slug:slug>", views.SupplierUpdateView.as_view(), name="supplier-update"
     ),
+    path(
+        "delete/<slug:slug>", views.SupplierDeleteView.as_view(), name="supplier-delete"
+    ),
 ]

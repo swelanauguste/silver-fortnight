@@ -10,86 +10,116 @@ Suppliers
 
 {% block content %}
 <div class="container my-5">
-<form class="
-    col-12
-    col-lg-auto
-    my-3
-    mb-lg-0
-    me-lg-3"
-    action="{% url 'suppliers:supplier-search' %}">
-    <input class="form-control"
+    <form class="
+    action="
+        {%
+        url 'suppliers:supplier-search'
+        %}">
+        <input class="form-control form-control-lg rounded-pill"
             type="text"
             name="q"
-            placeholder="Search..."
+            placeholder="search suppliers by (name, description, email, phone, address, district)..."
             aria-label="Search">
-</form>
+    </form>
+
+    <div class="my-5">
+        {% for supplier in suppliers %}
+        <h2>
+            <a href="{{supplier.get_absolute_url }}">
+                {{supplier.name}}
+            </a>
+        </h2>
+
+        <div class="container">
+            <span class="text-muted">
+                {{supplier.address}} {{supplier.district}}
+            </span>
+                {{supplier.description}}
+            <span>
+                <a class="text-decoration-none fw-bolder text-muted" href="mailto:{{supplier.email|default:''}}">
+                    {{supplier.email}}
+                </a>
+            </span>
+            <span>
+                <a class="text-decoration-none fw-bolder text-muted" href="tel:{{supplier.phone|default:""}}">
+                    {{supplier.phone}}
+                </a>
+            </span>
+            <span>
+                <a target="_blank" class="text-decoration-none fw-bolder text-muted" href="tel:{{supplier.website|default:""}}">
+                    {{supplier.website}}
+                </a>
+            </span>
+        </div>
+    </div>
+    {% endfor %}
+
+
+
+</div>
+{% endblock content %}
+
+
+<div class="container my-5">
+
 </div>
 <div class="container my-5">
-    
-    <h1 class="fs-1 list-inline-item ">Suppliers</h1>
-    <hr>
-    <a href="{% url 'suppliers:supplier-create' %}"
-        class="btn btn-dark px-5 text-end">add</a>
-    <div class="my-5">
-        <div class="row">
-           
-            <div class="col">
-                <div class="my-5">
-                    <h2 class="fs-2">Suppliers</h2>
-                    <hr>
-                    {% include 'pagination.html' %}
-                    <div class="table-responsive">
-                        <table class="table table-hover small">
-                            <thead>
-                                <tr>
-                                    <th scope="col">supplier</th>
-                                    <th scope="col">phone</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for supplier in suppliers %}
-                                <tr>
-                                    <td>
-                                        <a title="product details"
-                                            class="text-decoration-none text-dark"
-                                            href="{{supplier.get_absolute_url }}">
-                                            {{supplier.name}}
-                                        </a>
-                                        <!-- </td>
-                                    <td title="email">
-                                        <a
-                                            href="mailto:{{supplier.email|default:'--'}}">
-                                            {{supplier.email}}
-                                        </a>
-                                    </td> -->
-                                    <td title="phone">
-                                        <a
-                                            href="tel:{{supplier.phone|default:'--'}}">
-                                            {{supplier.phone}}
-                                        </a>
-                                    </td>
-                                    <!-- <td title="website">
-                                        <a target="_blank"
-                                            href="{{supplier.email|default:'--'}}">
-                                            {{supplier.website}}
-                                        </a>
-                                    </td> -->
-                                </tr>
-                                </a>
-                                {% empty %}
-                                <td colspan="4"
-                                    class="text-center">No Suppliers
-                                    <td />
-                                    {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    {% include 'pagination.html' %}
 
-                </div>
+    <h1 class="fs-1 text-center">Results</h1>
+    <hr>
+
+    <div class="my-5">
+
+        <div class="my-5">
+            {% include 'pagination.html' %}
+            <div class="table-responsive">
+                <table class="table table-hover small">
+                    <thead>
+                        <tr>
+                            <th scope="col">supplier</th>
+                            <th scope="col">phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for supplier in suppliers %}
+                        <tr>
+                            <td>
+                                <a title="product details"
+                                    class="text-decoration-none text-dark"
+                                    href="{{supplier.get_absolute_url }}">
+                                    {{supplier.name}}
+                                </a>
+                                <!-- </td>
+                                        <td title="email">
+                                            <a
+                                                href="mailto:{{supplier.email|default:'--'}}">
+                                                {{supplier.email}}
+                                            </a>
+                                        </td> -->
+                            <td title="phone">
+                                <a href="tel:{{supplier.phone|default:'--'}}">
+                                    {{supplier.phone}}
+                                </a>
+                            </td>
+                            <!-- <td title="website">
+                                            <a target="_blank"
+                                                href="{{supplier.email|default:'--'}}">
+                                                {{supplier.website}}
+                                            </a>
+                                        </td> -->
+                        </tr>
+                        </a>
+                        {% empty %}
+                        <td colspan="4"
+                            class="text-center">No Suppliers
+                            <td />
+                            {% endfor %}
+                    </tbody>
+                </table>
             </div>
+            {% include 'pagination.html' %}
+
         </div>
 
     </div>
 </div>
-{% endblock content %}
