@@ -10,66 +10,78 @@ Suppliers
 
 {% block content %}
 
+<div class="row">
+    <!-- card 1 -->
+    <div class="card mx-auto px-0"
+        style="max-width: 60%">
+        <h5 class="card-header text-center">Suppliers</h5>
 
-
-<div class="m-5">
-    <div class="row">
-
-        <div class="card mx-auto px-0"
-            style="max-width: 60%">
-            <h5 class="card-header text-center">Suppliers</h5>
-
-            <form class="m-5"
-                action="{% url 'suppliers:supplier-search' %}"
-                method="get">
-                <input class="form-control form-control-sm rounded-pill"
-                    type="text"
-                    name="q"
-                    placeholder="search suppliers by (name, description, email, phone, address, district)..."
-                    aria-label="Search">
-            </form>
-            <div class="card-body">
-                {% include 'pagination.html' %}
-                <div class="table-responsive">
-                    <table class="table table-hover small">
-                        <thead>
-                            <tr>
-                                <th scope="col">supplier</th>
-                                <th scope="col">phone</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for supplier in suppliers %}
-                            <tr>
-                                <td>
-                                    <a title="product details"
-                                        class="text-decoration-none text-dark"
-                                        href="{{supplier.get_absolute_url }}">
-                                        {{supplier.name}}
-                                    </a>
-                                <td title="phone">
-                                    <a
-                                        href="tel:{{supplier.phone|default:'--'}}">
-                                        {{supplier.phone}}
-                                    </a>
-                                </td>
-                            </tr>
-                            {% empty %}
-                            <tr>
-                                <td class="text-center"
-                                    colspan="2">
-                                    No Suppliers
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                {% include 'pagination.html' %}
-
+        <form class="m-5"
+            action="{% url 'suppliers:supplier-search' %}"
+            method="get">
+            <input class="form-control form-control-sm rounded-pill"
+                type="text"
+                name="q"
+                placeholder="search suppliers by (name, description, email, phone, address, district)..."
+                aria-label="Search">
+        </form>
+        <div class="card-body">
+            {% include 'pagination.html' %}
+            <div class="table-responsive">
+                <table class="table table-hover small">
+                    <thead>
+                        <tr>
+                            <th scope="col">suppliers</th>
+                            <th scope="col">phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for supplier in suppliers %}
+                        <tr>
+                            <td>
+                                <a title="product details"
+                                    class="text-decoration-none text-dark"
+                                    href="{{supplier.get_absolute_url }}">
+                                    {{supplier.name}}
+                                </a>
+                            <td title="phone">
+                                <a href="tel:{{supplier.phone|default:'--'}}">
+                                    {{supplier.phone|default:'--'}}
+                                </a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td class="text-center"
+                                colspan="2">
+                                No Suppliers
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
+            {% include 'pagination.html' %}
+
         </div>
-        <div class="card mx-auto px-0"
+    </div>
+    <!-- card 1 -->
+
+
+    <!-- card 2 -->
+
+    <div class="mx-auto px-0"
+        style="max-width: 30%;">
+        <!-- Button trigger modal -->
+        <button type="button"
+            class="btn btn-lg btn-dark"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+            Add Supplier
+        </button>
+    </div>
+
+    <!-- <div class="card mx-auto px-0"
             style="max-width: 30%;">
             <h5 class="card-header text-center">Add</h5>
 
@@ -81,6 +93,48 @@ Suppliers
                     <button class="btn btn-dark px-5 my-3"
                         type="submit">submit</button>
                 </form>
+            </div>
+        </div> -->
+    <!-- card 2 -->
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    id="exampleModalLabel">Supplier Details</h5>
+                <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="p-5"
+                    action="{% url 'suppliers:supplier-create' %}"
+                    method="post">
+                    {% csrf_token %}
+                    {{form|crispy}}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-dark px-5 my-3"
+                    type="submit">submit</button>
+
+                </form>
+
             </div>
         </div>
     </div>

@@ -14,7 +14,10 @@ class SupplierCreateForm(forms.ModelForm):
         model = Supplier
         fields = "__all__"
         exclude = ["created_by", "updated_by", "slug", "is_deleted"]
-        widgets = {"description": forms.Textarea(attrs={"rows": 3})}
+        widgets = {
+            "description": forms.Textarea(attrs={"rows": 3}),
+            "tags": forms.Textarea(attrs={"rows": 3}),
+        }
 
 
 class SupplierUpdateForm(forms.ModelForm):

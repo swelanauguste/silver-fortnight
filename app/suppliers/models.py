@@ -8,17 +8,15 @@ class IsNotDeletedManager(models.Manager):
     def get_queryset(self):
         return super(IsNotDeletedManager, self).get_queryset().filter(is_deleted=False)
 
-    
 
+# class Tag(TimeStampMixin):
+#     name = models.CharField(max_length=100, blank=True, null=True)
 
-class Tag(TimeStampMixin):
-    name = models.CharField(max_length=100, blank=True, null=True)
+#     class Meta:
+#         ordering = ["name"]
 
-    class Meta:
-        ordering = ["name"]
-
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
 class Supplier(TimeStampMixin):
@@ -34,7 +32,9 @@ class Supplier(TimeStampMixin):
     website = models.URLField(blank=True)
     is_active = models.BooleanField(default=True)
     is_deleted = models.BooleanField(default=False)
-    tag = models.ManyToManyField(Tag, related_name="supplier_tags", blank=True)
+    tags = models.TextField(
+        blank=True, null=True, help_text="Tags separated by comma eg.: #tag, #tags"
+    )
 
     objects = models.Manager()
     object_list = IsNotDeletedManager()

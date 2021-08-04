@@ -27,9 +27,9 @@ class SupplierSearch(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         query = self.request.GET.get("q")
         if query:
-            suppliers = Supplier.objects.filter(
+            suppliers = Supplier.object_list.filter(
                 Q(name__icontains=query)
-                | Q(tag__name__icontains=query)
+                | Q(tags__icontains=query)
                 | Q(description__icontains=query)
                 | Q(email__icontains=query)
                 | Q(phone__icontains=query)

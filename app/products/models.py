@@ -2,7 +2,7 @@ from django.db import models
 from mixins.assets import TimeStampMixin
 from django.urls import reverse
 from django.utils.text import slugify
-from suppliers.models import Supplier, Tag
+from suppliers.models import Supplier
 
 
 class Category(TimeStampMixin):
@@ -31,7 +31,9 @@ class Product(TimeStampMixin):
     )
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, null=True, unique=True)
-    tags = models.ManyToManyField(Tag, related_name="product_tags", blank=True)
+    tags = models.TextField(
+        blank=True, null=True, help_text="Tags separated by comma eg.: #tag, #tags"
+    )
     image = models.ImageField(upload_to="products/", blank=True)
     description = models.TextField(blank=True)
     init_qty = models.IntegerField("initial quantity", default=0)
@@ -52,8 +54,11 @@ class Product(TimeStampMixin):
             (order.get_order_quantity() for order in self.orders.all()), self.init_qty
         )
         # ) - (sum(item.get_delivered_quantity() for item in self.delivered_goods.all()))
+
     def get_delivered_balance(self):
-        return sum(delivery.get_delivered_quantity() for delivery in self.deliveries.all())
+        return sum(
+            delivery.get_delivered_quantity() for delivery in self.deliveries.all()
+        )
 
     def get_inventory_balance(self):
         return self.get_order_balance() - self.get_delivered_balance()
