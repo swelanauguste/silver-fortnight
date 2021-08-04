@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Product
 from .forms import ProductCreateForm, ProductUpdateForm
@@ -7,7 +8,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 
 
-class ProductSearchListView(ListView):
+class ProductSearchListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = "products/product_search.html"
     context_object_name = "products"
@@ -21,17 +22,19 @@ class ProductSearchListView(ListView):
                 Q(category_name__icontains=query)
                 | Q(supplier_name__icontains=query)
                 | Q(name__icontains=query)
-                | Q(tags_name__icontains=query)
+                | Q(tags__icontains=query)
                 | Q(description__icontains=query)
             )
         else:
             return Product.objects.all()
 
 
-class ProductListView(LoginRequiredMixin, ListView):
+class ProductListView(LoginRequiredMixin, FormMixin, ListView):
     model = Product
+    form_class = ProductCreateForm
     context_object_name = "products"
     paginate_by = 10
+    
 
 
 class ProductDetailView(LoginRequiredMixin, DetailView):

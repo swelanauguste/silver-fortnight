@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 
 {% block head_title %}
@@ -11,8 +12,11 @@ Products
 <div class="container my-5">
     <h1 class="fs-1 list-inline-item ">Products</h1>
     <hr>
-    <a href="{% url 'products:product-create' %}"
-        class="btn btn-dark px-5 text-end">add</a>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-dark px-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    New
+  </button>
+   
     <div class="my-5">
         {% include 'pagination.html' %}
         <div class="table-responsive">
@@ -46,26 +50,28 @@ Products
 
     </div>
 </div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <form class="p-5" action="{% url 'products:product-create' %}" method="post">
+             {{form|crispy}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark px-5" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-dark px-5">Save</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        <tr>
-            <td>@mdo</td>
-        </tr>
-
-
-
-
-
-    </tbody>
-</table>
